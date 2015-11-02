@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://rawgit.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.css">
+   <script src="https://rawgithub.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.js"></script>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+
+   <link rel="stylesheet" href="https://birdage.github.io/Leaflet.awesome-markers/dist/leaflet.awesome.rotate.css">
+
+   
+   
+   
+   
+
+   <style>
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="folium-map" id="folium_e8239980c6144e79bf182b1a49fb7011" style="width: 100%; height: 100%"></div>
+
+   <script>
+
+      
+
+      var base_tile = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          minZoom: 1,
+          attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      });
+
+      var baseLayer = {
+        "Base Layer": base_tile
+      };
+
+      /*
+      addition of the wms layers
+      */
+
+      
+
+      /*
+      addition of the tile layers
+      */
+      
+
+      /*
+      list of layers to be added
+      */
+      var layer_list = {
+      
+      };
+
+      /*
+      Bounding box.
+      */
+      var southWest = L.latLng(-90, -180),
+          northEast = L.latLng(90, 180),
+          bounds = L.latLngBounds(southWest, northEast);
+
+      /*
+      Creates the map and adds the selected layers
+      */
+      var map = L.map('folium_e8239980c6144e79bf182b1a49fb7011', {
+                                       center:[0, 0],
+                                       zoom: 2,
+                                       maxBounds: bounds,
+                                       layers: [base_tile]
+                                     });
+
+      L.control.layers(baseLayer, layer_list).addTo(map);
+
+      //cluster group
+      var clusteredmarkers = L.markerClusterGroup();
+      //section for adding clustered markers
+      
+      //add the clustered markers to the group anyway
+      map.addLayer(clusteredmarkers);
+
+      
+      var marker_1_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_1 = L.marker([-21.15, 
+							55.5],
+							{'icon':marker_1_icon}
+							);
+      marker_1.bindPopup("Bourbon, &#206;le (Mascareignes, &#206;les)");
+      marker_1._popup.options.maxWidth = 300;
+      map.addLayer(marker_1)
+      
+      var marker_2_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_2 = L.marker([21.195, 
+							72.8194],
+							{'icon':marker_2_icon}
+							);
+      marker_2.bindPopup("Surate (Inde)");
+      marker_2._popup.options.maxWidth = 300;
+      map.addLayer(marker_2)
+      
+      var marker_3_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_3 = L.marker([51.3441, 
+							9.084],
+							{'icon':marker_3_icon}
+							);
+      marker_3.bindPopup("Landau (Allemagne)");
+      marker_3._popup.options.maxWidth = 300;
+      map.addLayer(marker_3)
+      
+      var marker_4_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_4 = L.marker([22.8559, 
+							88.38],
+							{'icon':marker_4_icon}
+							);
+      marker_4.bindPopup("Chandernagor (Inde)");
+      marker_4._popup.options.maxWidth = 300;
+      map.addLayer(marker_4)
+      
+      var marker_5_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_5 = L.marker([29.1264, 
+							-89.0881],
+							{'icon':marker_5_icon}
+							);
+      marker_5.bindPopup("La Balise (Louisiane ; &#201;tats-Unis)");
+      marker_5._popup.options.maxWidth = 300;
+      map.addLayer(marker_5)
+      
+      var marker_6_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_6 = L.marker([50.5, 
+							2.5],
+							{'icon':marker_6_icon}
+							);
+      marker_6.bindPopup("Artois, R&#233;gion g&#233;ographique (France)");
+      marker_6._popup.options.maxWidth = 300;
+      map.addLayer(marker_6)
+      
+      var marker_7_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_7 = L.marker([14.6108, 
+							-61.0718],
+							{'icon':marker_7_icon}
+							);
+      marker_7.bindPopup("Fort-Royal (Martinique, &#206;le de la)");
+      marker_7._popup.options.maxWidth = 300;
+      map.addLayer(marker_7)
+      
+      var marker_8_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_8 = L.marker([47.3333, 
+							-2.4333],
+							{'icon':marker_8_icon}
+							);
+      marker_8.bindPopup("Gu&#233;rande (Loire-Atlantique ; France)");
+      marker_8._popup.options.maxWidth = 300;
+      map.addLayer(marker_8)
+      
+      var marker_9_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_9 = L.marker([45.7445, 
+							4.005],
+							{'icon':marker_9_icon}
+							);
+      marker_9.bindPopup("Bo&#235;n (Loire ; France)");
+      marker_9._popup.options.maxWidth = 300;
+      map.addLayer(marker_9)
+      
+      var marker_10_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_10 = L.marker([14.7425, 
+							-61.175],
+							{'icon':marker_10_icon}
+							);
+      marker_10.bindPopup("Saint-Pierre (Martinique, &#206;le de la)");
+      marker_10._popup.options.maxWidth = 300;
+      map.addLayer(marker_10)
+      
+      var marker_11_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_11 = L.marker([48.433, 
+							2.1758],
+							{'icon':marker_11_icon}
+							);
+      marker_11.bindPopup("&#201;tampes (Essonne ; France)");
+      marker_11._popup.options.maxWidth = 300;
+      map.addLayer(marker_11)
+      
+      var marker_12_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_12 = L.marker([32.0849, 
+							-81.1189],
+							{'icon':marker_12_icon}
+							);
+      marker_12.bindPopup("Savannah (G&#233;orgie ; &#201;tats-Unis)");
+      marker_12._popup.options.maxWidth = 300;
+      map.addLayer(marker_12)
+      
+      var marker_13_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_13 = L.marker([50.6401, 
+							3.0559],
+							{'icon':marker_13_icon}
+							);
+      marker_13.bindPopup("Lille (Nord ; France)");
+      marker_13._popup.options.maxWidth = 300;
+      map.addLayer(marker_13)
+      
+      var marker_14_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_14 = L.marker([46.6929, 
+							4.1391],
+							{'icon':marker_14_icon}
+							);
+      marker_14.bindPopup("Toulon-sur-Arroux (Sa&#244;ne-et-Loire ; France)");
+      marker_14._popup.options.maxWidth = 300;
+      map.addLayer(marker_14)
+      
+      var marker_15_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_15 = L.marker([14.530999999999999, 
+							-60.98],
+							{'icon':marker_15_icon}
+							);
+      marker_15.bindPopup("Rivi&#232;re-Sal&#233;e (Martinique, &#206;le de la)");
+      marker_15._popup.options.maxWidth = 300;
+      map.addLayer(marker_15)
+      
+      var marker_16_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_16 = L.marker([40.46366700000001, 
+							-3.7492199999999998],
+							{'icon':marker_16_icon}
+							);
+      marker_16.bindPopup("Espagne");
+      marker_16._popup.options.maxWidth = 300;
+      map.addLayer(marker_16)
+      
+      var marker_17_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_17 = L.marker([13.26, 
+							-61.1794],
+							{'icon':marker_17_icon}
+							);
+      marker_17.bindPopup("Saint-Vincent, &#206;le (Antilles)");
+      marker_17._popup.options.maxWidth = 300;
+      map.addLayer(marker_17)
+      
+      var marker_18_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_18 = L.marker([18.2, 
+							-73.75],
+							{'icon':marker_18_icon}
+							);
+      marker_18.bindPopup("Les Cayes (Saint-Domingue, &#206;le de)");
+      marker_18._popup.options.maxWidth = 300;
+      map.addLayer(marker_18)
+      
+      var marker_19_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_19 = L.marker([30.656024100000003, 
+							-88.0311088],
+							{'icon':marker_19_icon}
+							);
+      marker_19.bindPopup("La Mobile (Alabama ; &#201;tats-Unis)");
+      marker_19._popup.options.maxWidth = 300;
+      map.addLayer(marker_19)
+      
+      var marker_20_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_20 = L.marker([5.2025, 
+							1.09027],
+							{'icon':marker_20_icon}
+							);
+      marker_20.bindPopup("Amokou, Fort (Ghana)");
+      marker_20._popup.options.maxWidth = 300;
+      map.addLayer(marker_20)
+      
+      var marker_21_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_21 = L.marker([48.3873, 
+							-4.4879],
+							{'icon':marker_21_icon}
+							);
+      marker_21.bindPopup("Brest (Finist&#232;re ; France)");
+      marker_21._popup.options.maxWidth = 300;
+      map.addLayer(marker_21)
+      
+      var marker_22_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_22 = L.marker([19.8, 
+							-73.3833],
+							{'icon':marker_22_icon}
+							);
+      marker_22.bindPopup("M&#244;le-Saint-Nicolas (Saint-Domingue, &#206;le de)");
+      marker_22._popup.options.maxWidth = 300;
+      map.addLayer(marker_22)
+      
+      var marker_23_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_23 = L.marker([14.6678596, 
+							-17.3989282],
+							{'icon':marker_23_icon}
+							);
+      marker_23.bindPopup("Gor&#233;e, &#206;le de (S&#233;n&#233;gal)");
+      marker_23._popup.options.maxWidth = 300;
+      map.addLayer(marker_23)
+      
+      var marker_24_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_24 = L.marker([18.54, 
+							-72.3399],
+							{'icon':marker_24_icon}
+							);
+      marker_24.bindPopup("Port-au-Prince (Saint-Domingue, &#206;le de)");
+      marker_24._popup.options.maxWidth = 300;
+      map.addLayer(marker_24)
+      
+      var marker_25_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_25 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_25_icon}
+							);
+      marker_25.bindPopup("Guadeloupe, &#206;le de la (Antilles)");
+      marker_25._popup.options.maxWidth = 300;
+      map.addLayer(marker_25)
+      
+      var marker_26_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_26 = L.marker([48.11, 
+							-1.6783],
+							{'icon':marker_26_icon}
+							);
+      marker_26.bindPopup("Rennes (Ille-et-Vilaine ; France)");
+      marker_26._popup.options.maxWidth = 300;
+      map.addLayer(marker_26)
+      
+      var marker_27_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_27 = L.marker([18.4314, 
+							-72.8669],
+							{'icon':marker_27_icon}
+							);
+      marker_27.bindPopup("Petit-Goave (Saint-Domingue, &#206;le de)");
+      marker_27._popup.options.maxWidth = 300;
+      map.addLayer(marker_27)
+      
+      var marker_28_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_28 = L.marker([48.5771, 
+							-3.825],
+							{'icon':marker_28_icon}
+							);
+      marker_28.bindPopup("Morlaix (Finist&#232;re ; France)");
+      marker_28._popup.options.maxWidth = 300;
+      map.addLayer(marker_28)
+      
+      var marker_29_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_29 = L.marker([46.5356, 
+							3.1928],
+							{'icon':marker_29_icon}
+							);
+      marker_29.bindPopup("Bourbonnais, R&#233;gion g&#233;ographique (France)");
+      marker_29._popup.options.maxWidth = 300;
+      map.addLayer(marker_29)
+      
+      var marker_30_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_30 = L.marker([47.1383, 
+							4.9511],
+							{'icon':marker_30_icon}
+							);
+      marker_30.bindPopup("Nuits-Saint-Georges (C&#244;te-d&#8217;Or ; France)");
+      marker_30._popup.options.maxWidth = 300;
+      map.addLayer(marker_30)
+      
+      var marker_31_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_31 = L.marker([49.1167, 
+							6.1826],
+							{'icon':marker_31_icon}
+							);
+      marker_31.bindPopup("Metz (Moselle ; France)");
+      marker_31._popup.options.maxWidth = 300;
+      map.addLayer(marker_31)
+      
+      var marker_32_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_32 = L.marker([47.7068, 
+							-3.3538],
+							{'icon':marker_32_icon}
+							);
+      marker_32.bindPopup("Port-Louis (Morbihan ; France)");
+      marker_32._popup.options.maxWidth = 300;
+      map.addLayer(marker_32)
+      
+      var marker_33_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_33 = L.marker([21.0, 
+							78.0],
+							{'icon':marker_33_icon}
+							);
+      marker_33.bindPopup("Inde fran&#231;aise");
+      marker_33._popup.options.maxWidth = 300;
+      map.addLayer(marker_33)
+      
+      var marker_34_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_34 = L.marker([46.1616, 
+							-1.1503],
+							{'icon':marker_34_icon}
+							);
+      marker_34.bindPopup("La Rochelle (Charente-Maritime ; France)");
+      marker_34._popup.options.maxWidth = 300;
+      map.addLayer(marker_34)
+      
+      var marker_35_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_35 = L.marker([19.45, 
+							-72.6833],
+							{'icon':marker_35_icon}
+							);
+      marker_35.bindPopup("Les Gona&#239;ves (Saint-Domingue, &#206;le de)");
+      marker_35._popup.options.maxWidth = 300;
+      map.addLayer(marker_35)
+      
+      var marker_36_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_36 = L.marker([30.0061, 
+							-90.1195],
+							{'icon':marker_36_icon}
+							);
+      marker_36.bindPopup("La Nouvelle-Orl&#233;ans (Louisiane ; &#201;tats-Unis)");
+      marker_36._popup.options.maxWidth = 300;
+      map.addLayer(marker_36)
+      
+      var marker_37_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_37 = L.marker([6.366667, 
+							2.083333],
+							{'icon':marker_37_icon}
+							);
+      marker_37.bindPopup("Juda (B&#233;nin)");
+      marker_37._popup.options.maxWidth = 300;
+      map.addLayer(marker_37)
+      
+      var marker_38_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_38 = L.marker([46.3498, 
+							-72.5585],
+							{'icon':marker_38_icon}
+							);
+      marker_38.bindPopup("Trois-Rivi&#232;res (Canada)");
+      marker_38._popup.options.maxWidth = 300;
+      map.addLayer(marker_38)
+      
+      var marker_39_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_39 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_39_icon}
+							);
+      marker_39.bindPopup("Royale, &#206;le (Canada)");
+      marker_39._popup.options.maxWidth = 300;
+      map.addLayer(marker_39)
+      
+      var marker_40_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_40 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_40_icon}
+							);
+      marker_40.bindPopup("Am&#233;rique, &#206;les fran&#231;aises d'");
+      marker_40._popup.options.maxWidth = 300;
+      map.addLayer(marker_40)
+      
+      var marker_41_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_41 = L.marker([43.6043, 
+							1.4437],
+							{'icon':marker_41_icon}
+							);
+      marker_41.bindPopup("Toulouse (Haute-Garonne ; France)");
+      marker_41._popup.options.maxWidth = 300;
+      map.addLayer(marker_41)
+      
+      var marker_42_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_42 = L.marker([11.2431, 
+							-60.6665],
+							{'icon':marker_42_icon}
+							);
+      marker_42.bindPopup("Tabago, &#206;le (Antilles)");
+      marker_42._popup.options.maxWidth = 300;
+      map.addLayer(marker_42)
+      
+      var marker_43_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_43 = L.marker([5.55, 
+							-0.2167],
+							{'icon':marker_43_icon}
+							);
+      marker_43.bindPopup("C&#244;te de l'Or, R&#233;gion g&#233;ographique (Afrique)");
+      marker_43._popup.options.maxWidth = 300;
+      map.addLayer(marker_43)
+      
+      var marker_44_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_44 = L.marker([43.2, 
+							0.13333299999999998],
+							{'icon':marker_44_icon}
+							);
+      marker_44.bindPopup("Bigorre, R&#233;gion g&#233;ographique (France)");
+      marker_44._popup.options.maxWidth = 300;
+      map.addLayer(marker_44)
+      
+      var marker_45_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_45 = L.marker([16.0326307, 
+							-16.4818167],
+							{'icon':marker_45_icon}
+							);
+      marker_45.bindPopup("Saint-Louis (S&#233;n&#233;gal)");
+      marker_45._popup.options.maxWidth = 300;
+      map.addLayer(marker_45)
+      
+      var marker_46_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_46 = L.marker([45.5248, 
+							4.8735],
+							{'icon':marker_46_icon}
+							);
+      marker_46.bindPopup("Vienne (Is&#232;re ; France)");
+      marker_46._popup.options.maxWidth = 300;
+      map.addLayer(marker_46)
+      
+      var marker_47_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_47 = L.marker([46.8156, 
+							-71.2254],
+							{'icon':marker_47_icon}
+							);
+      marker_47.bindPopup("Qu&#233;bec (Canada)");
+      marker_47._popup.options.maxWidth = 300;
+      map.addLayer(marker_47)
+      
+      var marker_48_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_48 = L.marker([31.554444, 
+							-91.3875],
+							{'icon':marker_48_icon}
+							);
+      marker_48.bindPopup("Natchez, Poste (Mississippi ; &#201;tats-Unis)");
+      marker_48._popup.options.maxWidth = 300;
+      map.addLayer(marker_48)
+      
+      var marker_49_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_49 = L.marker([16.336, 
+							-61.4465],
+							{'icon':marker_49_icon}
+							);
+      marker_49.bindPopup("Grande Terre, R&#233;gion g&#233;ographique (Guadeloupe, &#206;le de la)");
+      marker_49._popup.options.maxWidth = 300;
+      map.addLayer(marker_49)
+      
+      var marker_50_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_50 = L.marker([11.93, 
+							79.83],
+							{'icon':marker_50_icon}
+							);
+      marker_50.bindPopup("Pondich&#233;ry (Inde)");
+      marker_50._popup.options.maxWidth = 300;
+      map.addLayer(marker_50)
+      
+      var marker_51_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_51 = L.marker([15.9362, 
+							-61.2708],
+							{'icon':marker_51_icon}
+							);
+      marker_51.bindPopup("Marie-Galante, &#206;le (Antilles)");
+      marker_51._popup.options.maxWidth = 300;
+      map.addLayer(marker_51)
+      
+      var marker_52_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_52 = L.marker([48.6486, 
+							-2.026],
+							{'icon':marker_52_icon}
+							);
+      marker_52.bindPopup("Saint-Malo (Ille-et-Vilaine ; France)");
+      marker_52._popup.options.maxWidth = 300;
+      map.addLayer(marker_52)
+      
+      var marker_53_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_53 = L.marker([-52.0, 
+							-59.5],
+							{'icon':marker_53_icon}
+							);
+      marker_53.bindPopup("Malouines, &#206;les");
+      marker_53._popup.options.maxWidth = 300;
+      map.addLayer(marker_53)
+      
+      var marker_54_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_54 = L.marker([44.5538, 
+							3.2914],
+							{'icon':marker_54_icon}
+							);
+      marker_54.bindPopup("Marvejols (Loz&#232;re ; France)");
+      marker_54._popup.options.maxWidth = 300;
+      map.addLayer(marker_54)
+      
+      var marker_55_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_55 = L.marker([46.2818, 
+							-60.5423],
+							{'icon':marker_55_icon}
+							);
+      marker_55.bindPopup("Port-Dauphin (Cap-Breton, &#206;le du)");
+      marker_55._popup.options.maxWidth = 300;
+      map.addLayer(marker_55)
+      
+      var marker_56_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_56 = L.marker([48.8534, 
+							2.3488],
+							{'icon':marker_56_icon}
+							);
+      marker_56.bindPopup("Paris (France)");
+      marker_56._popup.options.maxWidth = 300;
+      map.addLayer(marker_56)
+      
+      var marker_57_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_57 = L.marker([19.25, 
+							-72.783333],
+							{'icon':marker_57_icon}
+							);
+      marker_57.bindPopup("L'Artibonite (Saint-Domingue, &#206;le de)");
+      marker_57._popup.options.maxWidth = 300;
+      map.addLayer(marker_57)
+      
+      var marker_58_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_58 = L.marker([44.1625, 
+							4.6203],
+							{'icon':marker_58_icon}
+							);
+      marker_58.bindPopup("Bagnols-sur-C&#232;ze (Gard ; France)");
+      marker_58._popup.options.maxWidth = 300;
+      map.addLayer(marker_58)
+      
+      var marker_59_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_59 = L.marker([17.0771, 
+							-61.8125],
+							{'icon':marker_59_icon}
+							);
+      marker_59.bindPopup("Antigua, &#206;le (Antilles)");
+      marker_59._popup.options.maxWidth = 300;
+      map.addLayer(marker_59)
+      
+      var marker_60_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_60 = L.marker([13.316667, 
+							43.25],
+							{'icon':marker_60_icon}
+							);
+      marker_60.bindPopup("Moka (Yemen)");
+      marker_60._popup.options.maxWidth = 300;
+      map.addLayer(marker_60)
+      
+      var marker_61_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_61 = L.marker([46.5833, 
+							0.3333],
+							{'icon':marker_61_icon}
+							);
+      marker_61.bindPopup("Poitiers (Vienne ; France)");
+      marker_61._popup.options.maxWidth = 300;
+      map.addLayer(marker_61)
+      
+      var marker_62_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_62 = L.marker([4.0, 
+							-53.0],
+							{'icon':marker_62_icon}
+							);
+      marker_62.bindPopup("Guyane fran&#231;aise");
+      marker_62._popup.options.maxWidth = 300;
+      map.addLayer(marker_62)
+      
+      var marker_63_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_63 = L.marker([44.2127, 
+							4.5318],
+							{'icon':marker_63_icon}
+							);
+      marker_63.bindPopup("Saint-Laurent-de-Carnols (Gard ; France)");
+      marker_63._popup.options.maxWidth = 300;
+      map.addLayer(marker_63)
+      
+      var marker_64_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_64 = L.marker([12.1199, 
+							-61.6882],
+							{'icon':marker_64_icon}
+							);
+      marker_64.bindPopup("Grenade, &#206;le de (Antilles)");
+      marker_64._popup.options.maxWidth = 300;
+      map.addLayer(marker_64)
+      
+      var marker_65_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_65 = L.marker([43.7061, 
+							-1.0539],
+							{'icon':marker_65_icon}
+							);
+      marker_65.bindPopup("Dax (Landes ; France)");
+      marker_65._popup.options.maxWidth = 300;
+      map.addLayer(marker_65)
+      
+      var marker_66_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_66 = L.marker([6.5, 
+							-58.0833],
+							{'icon':marker_66_icon}
+							);
+      marker_66.bindPopup("Demerary, Colonie n&#233;erlandaise (Am&#233;rique du Sud)");
+      marker_66._popup.options.maxWidth = 300;
+      map.addLayer(marker_66)
+      
+      var marker_67_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_67 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_67_icon}
+							);
+      marker_67.bindPopup("Louisiane, Colonie fran&#231;aise");
+      marker_67._popup.options.maxWidth = 300;
+      map.addLayer(marker_67)
+      
+      var marker_68_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_68 = L.marker([45.95, 
+							-0.5167],
+							{'icon':marker_68_icon}
+							);
+      marker_68.bindPopup("Saint-Jean-d'Ang&#233;ly (Charente-Maritime ; France)");
+      marker_68._popup.options.maxWidth = 300;
+      map.addLayer(marker_68)
+      
+      var marker_69_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_69 = L.marker([49.1597, 
+							5.3895],
+							{'icon':marker_69_icon}
+							);
+      marker_69.bindPopup("Verdun (Meuse ; France)");
+      marker_69._popup.options.maxWidth = 300;
+      map.addLayer(marker_69)
+      
+      var marker_70_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_70 = L.marker([45.9373, 
+							-0.9665],
+							{'icon':marker_70_icon}
+							);
+      marker_70.bindPopup("Rochefort (Charente-Maritime ; France)");
+      marker_70._popup.options.maxWidth = 300;
+      map.addLayer(marker_70)
+      
+      var marker_71_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_71 = L.marker([43.5924, 
+							6.5374],
+							{'icon':marker_71_icon}
+							);
+      marker_71.bindPopup("Callas (Var ; France)");
+      marker_71._popup.options.maxWidth = 300;
+      map.addLayer(marker_71)
+      
+      var marker_72_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_72 = L.marker([45.183, 
+							0.7170000000000001],
+							{'icon':marker_72_icon}
+							);
+      marker_72.bindPopup("P&#233;rigord, R&#233;gion g&#233;ographique (France)");
+      marker_72._popup.options.maxWidth = 300;
+      map.addLayer(marker_72)
+      
+      var marker_73_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_73 = L.marker([18.7815, 
+							-72.2571],
+							{'icon':marker_73_icon}
+							);
+      marker_73.bindPopup("Saint-Domingue, Colonie fran&#231;aise (Saint-Domingue, &#206;le de)");
+      marker_73._popup.options.maxWidth = 300;
+      map.addLayer(marker_73)
+      
+      var marker_74_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_74 = L.marker([43.25, 
+							0.833333],
+							{'icon':marker_74_icon}
+							);
+      marker_74.bindPopup("B&#233;arn, R&#233;gion g&#233;ographique (France)");
+      marker_74._popup.options.maxWidth = 300;
+      map.addLayer(marker_74)
+      
+      var marker_75_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_75 = L.marker([46.666667, 
+							4.7],
+							{'icon':marker_75_icon}
+							);
+      marker_75.bindPopup("Bourgogne, R&#233;gion g&#233;ographique (France)");
+      marker_75._popup.options.maxWidth = 300;
+      map.addLayer(marker_75)
+      
+      var marker_76_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_76 = L.marker([15.9978, 
+							-61.7263],
+							{'icon':marker_76_icon}
+							);
+      marker_76.bindPopup("Basse-Terre (Guadeloupe, &#206;le de la)");
+      marker_76._popup.options.maxWidth = 300;
+      map.addLayer(marker_76)
+      
+      var marker_77_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_77 = L.marker([43.5, 
+							5.0833330000000005],
+							{'icon':marker_77_icon}
+							);
+      marker_77.bindPopup("Provence, R&#233;gion g&#233;ographique (France)");
+      marker_77._popup.options.maxWidth = 300;
+      map.addLayer(marker_77)
+      
+      var marker_78_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_78 = L.marker([16.3184, 
+							-61.0519],
+							{'icon':marker_78_icon}
+							);
+      marker_78.bindPopup("D&#233;sirade, &#206;le de la (Antilles)");
+      marker_78._popup.options.maxWidth = 300;
+      map.addLayer(marker_78)
+      
+      var marker_79_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_79 = L.marker([-20.3137, 
+							57.5464],
+							{'icon':marker_79_icon}
+							);
+      marker_79.bindPopup("France, &#206;le de (Mascareignes, &#206;les)");
+      marker_79._popup.options.maxWidth = 300;
+      map.addLayer(marker_79)
+      
+      var marker_80_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_80 = L.marker([18.2698, 
+							-73.7732],
+							{'icon':marker_80_icon}
+							);
+      marker_80.bindPopup("Fond-de-l'&#206;le-&#224;-Vache (Saint-Domingue, &#206;le de)");
+      marker_80._popup.options.maxWidth = 300;
+      map.addLayer(marker_80)
+      
+      var marker_81_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_81 = L.marker([43.2963, 
+							5.3699],
+							{'icon':marker_81_icon}
+							);
+      marker_81.bindPopup("Marseille (Bouches-du-Rh&#244;ne ; France)");
+      marker_81._popup.options.maxWidth = 300;
+      map.addLayer(marker_81)
+      
+      var marker_82_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_82 = L.marker([19.95, 
+							-72.8333],
+							{'icon':marker_82_icon}
+							);
+      marker_82.bindPopup("Port-de-Paix (Saint-Domingue, &#206;le de)");
+      marker_82._popup.options.maxWidth = 300;
+      map.addLayer(marker_82)
+      
+      var marker_83_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_83 = L.marker([4.28479, 
+							-51.622],
+							{'icon':marker_83_icon}
+							);
+      marker_83.bindPopup("Oyapock, Poste (Guyane fran&#231;aise)");
+      marker_83._popup.options.maxWidth = 300;
+      map.addLayer(marker_83)
+      
+      var marker_84_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_84 = L.marker([13.9287, 
+							-60.9247],
+							{'icon':marker_84_icon}
+							);
+      marker_84.bindPopup("Sainte-Lucie, &#206;le (Antilles)");
+      marker_84._popup.options.maxWidth = 300;
+      map.addLayer(marker_84)
+      
+      var marker_85_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_85 = L.marker([-20.0, 
+							47.0],
+							{'icon':marker_85_icon}
+							);
+      marker_85.bindPopup("Madagascar, &#206;le de");
+      marker_85._popup.options.maxWidth = 300;
+      map.addLayer(marker_85)
+      
+      var marker_86_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_86 = L.marker([12.8932, 
+							79.3119],
+							{'icon':marker_86_icon}
+							);
+      marker_86.bindPopup("Arcatte, Province (Inde)");
+      marker_86._popup.options.maxWidth = 300;
+      map.addLayer(marker_86)
+      
+      var marker_87_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_87 = L.marker([45.8923, 
+							-59.9841],
+							{'icon':marker_87_icon}
+							);
+      marker_87.bindPopup("Louisbourg (Cap-Breton, &#206;le du)");
+      marker_87._popup.options.maxWidth = 300;
+      map.addLayer(marker_87)
+      
+      var marker_88_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_88 = L.marker([5.4314029999999995, 
+							-2.093964],
+							{'icon':marker_88_icon}
+							);
+      marker_88.bindPopup("Anomabo (Ghana)");
+      marker_88._popup.options.maxWidth = 300;
+      map.addLayer(marker_88)
+      
+      var marker_89_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_89 = L.marker([47.6197, 
+							6.1561],
+							{'icon':marker_89_icon}
+							);
+      marker_89.bindPopup("Vesoul (Haute-Sa&#244;ne ; France)");
+      marker_89._popup.options.maxWidth = 300;
+      map.addLayer(marker_89)
+      
+      var marker_90_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_90 = L.marker([44.8333, 
+							-0.5667],
+							{'icon':marker_90_icon}
+							);
+      marker_90.bindPopup("Bordeaux (Gironde ; France)");
+      marker_90._popup.options.maxWidth = 300;
+      map.addLayer(marker_90)
+      
+      var marker_91_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_91 = L.marker([43.2309, 
+							0.081],
+							{'icon':marker_91_icon}
+							);
+      marker_91.bindPopup("Tarbes (Hautes-Pyr&#233;n&#233;es ; France)");
+      marker_91._popup.options.maxWidth = 300;
+      map.addLayer(marker_91)
+      
+      var marker_92_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_92 = L.marker([11.7013, 
+							75.5369],
+							{'icon':marker_92_icon}
+							);
+      marker_92.bindPopup("Mah&#233; (Inde)");
+      marker_92._popup.options.maxWidth = 300;
+      map.addLayer(marker_92)
+      
+      var marker_93_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_93 = L.marker([19.85, 
+							-73.2],
+							{'icon':marker_93_icon}
+							);
+      marker_93.bindPopup("Jean-Rabel (Saint-Domingue, &#206;le de)");
+      marker_93._popup.options.maxWidth = 300;
+      map.addLayer(marker_93)
+      
+      var marker_94_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_94 = L.marker([15.4696, 
+							-61.3641],
+							{'icon':marker_94_icon}
+							);
+      marker_94.bindPopup("Dominique, &#206;le de la (Antilles)");
+      marker_94._popup.options.maxWidth = 300;
+      map.addLayer(marker_94)
+      
+      var marker_95_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_95 = L.marker([19.6646, 
+							-71.8374],
+							{'icon':marker_95_icon}
+							);
+      marker_95.bindPopup("Fort-Dauphin (Saint-Domingue, &#206;le de)");
+      marker_95._popup.options.maxWidth = 300;
+      map.addLayer(marker_95)
+      
+      var marker_96_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_96 = L.marker([39.3087714, 
+							16.3463791],
+							{'icon':marker_96_icon}
+							);
+      marker_96.bindPopup("Calabre, R&#233;gion g&#233;ographique (Italie)");
+      marker_96._popup.options.maxWidth = 300;
+      map.addLayer(marker_96)
+      
+      var marker_97_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_97 = L.marker([7.538060000000001, 
+							-8.4972],
+							{'icon':marker_97_icon}
+							);
+      marker_97.bindPopup("Guin&#233;e (16e si&#232;cle-18e si&#232;cle)");
+      marker_97._popup.options.maxWidth = 300;
+      map.addLayer(marker_97)
+      
+      var marker_98_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_98 = L.marker([44.61, 
+							2.0331],
+							{'icon':marker_98_icon}
+							);
+      marker_98.bindPopup("Figeac (Lot ; France)");
+      marker_98._popup.options.maxWidth = 300;
+      map.addLayer(marker_98)
+      
+      var marker_99_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_99 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_99_icon}
+							);
+      marker_99.bindPopup("Cayenne (Guyane fran&#231;aise)");
+      marker_99._popup.options.maxWidth = 300;
+      map.addLayer(marker_99)
+      
+      var marker_100_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_100 = L.marker([48.2667, 
+							2.6933],
+							{'icon':marker_100_icon}
+							);
+      marker_100.bindPopup("Nemours (Seine-et-Marne ; France)");
+      marker_100._popup.options.maxWidth = 300;
+      map.addLayer(marker_100)
+      
+      var marker_101_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_101 = L.marker([43.6333, 
+							5.1],
+							{'icon':marker_101_icon}
+							);
+      marker_101.bindPopup("Salon-de-Provence (Bouches-du-Rh&#244;ne ; France)");
+      marker_101._popup.options.maxWidth = 300;
+      map.addLayer(marker_101)
+      
+      var marker_102_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_102 = L.marker([14.4713, 
+							-60.8632],
+							{'icon':marker_102_icon}
+							);
+      marker_102.bindPopup("Cul-de-Sac-Marin (Martinique, &#206;le de la)");
+      marker_102._popup.options.maxWidth = 300;
+      map.addLayer(marker_102)
+      
+      var marker_103_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_103 = L.marker([19.55, 
+							-71.733333],
+							{'icon':marker_103_icon}
+							);
+      marker_103.bindPopup("Maribaroux (Ouanaminthe ; Saint-Domingue, &#206;le de)");
+      marker_103._popup.options.maxWidth = 300;
+      map.addLayer(marker_103)
+      
+      var marker_104_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_104 = L.marker([48.5, 
+							7.5],
+							{'icon':marker_104_icon}
+							);
+      marker_104.bindPopup("Alsace, R&#233;gion g&#233;ographique (France)");
+      marker_104._popup.options.maxWidth = 300;
+      map.addLayer(marker_104)
+      
+      var marker_105_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_105 = L.marker([18.235278, 
+							-72.53666700000001],
+							{'icon':marker_105_icon}
+							);
+      marker_105.bindPopup("Saint-Domingue, Colonie fran&#231;aise (Saint-Domingue, &#206;le de) -- Sud");
+      marker_105._popup.options.maxWidth = 300;
+      map.addLayer(marker_105)
+      
+      var marker_106_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_106 = L.marker([16.616667, 
+							-15.033332999999999],
+							{'icon':marker_106_icon}
+							);
+      marker_106.bindPopup("Podor (S&#233;n&#233;gal)");
+      marker_106._popup.options.maxWidth = 300;
+      map.addLayer(marker_106)
+      
+      var marker_107_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_107 = L.marker([-25.033333, 
+							46.983333],
+							{'icon':marker_107_icon}
+							);
+      marker_107.bindPopup("Fort-Dauphin (Madagascar, &#206;le de)");
+      marker_107._popup.options.maxWidth = 300;
+      map.addLayer(marker_107)
+      
+      var marker_108_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_108 = L.marker([14.7376, 
+							-60.9629],
+							{'icon':marker_108_icon}
+							);
+      marker_108.bindPopup("La Trinit&#233; (Martinique, &#206;le de la)");
+      marker_108._popup.options.maxWidth = 300;
+      map.addLayer(marker_108)
+      
+      var marker_109_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_109 = L.marker([-20.8781, 
+							55.4535],
+							{'icon':marker_109_icon}
+							);
+      marker_109.bindPopup("Saint-Denis (R&#233;union, &#206;le de la)");
+      marker_109._popup.options.maxWidth = 300;
+      map.addLayer(marker_109)
+      
+      var marker_110_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_110 = L.marker([14.666667000000002, 
+							-17.416667],
+							{'icon':marker_110_icon}
+							);
+      marker_110.bindPopup("S&#233;n&#233;gal");
+      marker_110._popup.options.maxWidth = 300;
+      map.addLayer(marker_110)
+      
+      var marker_111_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_111 = L.marker([18.5108, 
+							-72.6339],
+							{'icon':marker_111_icon}
+							);
+      marker_111.bindPopup("L&#233;ogane (Saint-Domingue, &#206;le de)");
+      marker_111._popup.options.maxWidth = 300;
+      map.addLayer(marker_111)
+      
+      var marker_112_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_112 = L.marker([45.5003, 
+							-73.6464],
+							{'icon':marker_112_icon}
+							);
+      marker_112.bindPopup("Montr&#233;al (Canada)");
+      marker_112._popup.options.maxWidth = 300;
+      map.addLayer(marker_112)
+      
+      var marker_113_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_113 = L.marker([48.74, 
+							7.3651],
+							{'icon':marker_113_icon}
+							);
+      marker_113.bindPopup("Saverne (Bas-Rhin ; France)");
+      marker_113._popup.options.maxWidth = 300;
+      map.addLayer(marker_113)
+      
+      var marker_114_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_114 = L.marker([16.2422, 
+							-61.5343],
+							{'icon':marker_114_icon}
+							);
+      marker_114.bindPopup("Pointe-&#224;-Pitre (Guadeloupe, &#206;le de la)");
+      marker_114._popup.options.maxWidth = 300;
+      map.addLayer(marker_114)
+      
+      var marker_115_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_115 = L.marker([49.25, 
+							4.0333],
+							{'icon':marker_115_icon}
+							);
+      marker_115.bindPopup("Reims (Marne ; France)");
+      marker_115._popup.options.maxWidth = 300;
+      map.addLayer(marker_115)
+      
+      var marker_116_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_116 = L.marker([51.2167, 
+							2.9],
+							{'icon':marker_116_icon}
+							);
+      marker_116.bindPopup("Ostende (Belgique)");
+      marker_116._popup.options.maxWidth = 300;
+      map.addLayer(marker_116)
+      
+      var marker_117_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_117 = L.marker([43.666667, 
+							3.166667],
+							{'icon':marker_117_icon}
+							);
+      marker_117.bindPopup("Languedoc, R&#233;gion g&#233;ographique (France)");
+      marker_117._popup.options.maxWidth = 300;
+      map.addLayer(marker_117)
+      
+      var marker_118_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_118 = L.marker([44.2553, 
+							1.1382],
+							{'icon':marker_118_icon}
+							);
+      marker_118.bindPopup("Lauzerte (Tarn-et-Garonne ; France)");
+      marker_118._popup.options.maxWidth = 300;
+      map.addLayer(marker_118)
+      
+      var marker_119_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_119 = L.marker([47.0, 
+							6.0],
+							{'icon':marker_119_icon}
+							);
+      marker_119.bindPopup("Franche-Comt&#233;, R&#233;gion g&#233;ographique (France)");
+      marker_119._popup.options.maxWidth = 300;
+      map.addLayer(marker_119)
+      
+      var marker_120_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_120 = L.marker([49.2, 
+							0.016666999999999998],
+							{'icon':marker_120_icon}
+							);
+      marker_120.bindPopup("Normandie, R&#233;gion g&#233;ographique (France)");
+      marker_120._popup.options.maxWidth = 300;
+      map.addLayer(marker_120)
+      
+      var marker_121_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_121 = L.marker([18.2667, 
+							-73.55],
+							{'icon':marker_121_icon}
+							);
+      marker_121.bindPopup("Saint-Louis-du-Sud (Saint-Domingue, &#206;le de)");
+      marker_121._popup.options.maxWidth = 300;
+      map.addLayer(marker_121)
+      
+      var marker_122_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_122 = L.marker([20.593684, 
+							78.96288],
+							{'icon':marker_122_icon}
+							);
+      marker_122.bindPopup("Inde");
+      marker_122._popup.options.maxWidth = 300;
+      map.addLayer(marker_122)
+      
+      var marker_123_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_123 = L.marker([53.0, 
+							-70.0],
+							{'icon':marker_123_icon}
+							);
+      marker_123.bindPopup("Canada, Colonie fran&#231;aise");
+      marker_123._popup.options.maxWidth = 300;
+      map.addLayer(marker_123)
+      
+      var marker_124_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_124 = L.marker([38.7486, 
+							-9.1345],
+							{'icon':marker_124_icon}
+							);
+      marker_124.bindPopup("Lisbonne (Portugal)");
+      marker_124._popup.options.maxWidth = 300;
+      map.addLayer(marker_124)
+      
+      var marker_125_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_125 = L.marker([50.4667, 
+							4.8667],
+							{'icon':marker_125_icon}
+							);
+      marker_125.bindPopup("Namur (Belgique)");
+      marker_125._popup.options.maxWidth = 300;
+      map.addLayer(marker_125)
+      
+      var marker_126_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_126 = L.marker([46.3848, 
+							-63.3691],
+							{'icon':marker_126_icon}
+							);
+      marker_126.bindPopup("Saint-Jean, &#206;le (Canada)");
+      marker_126._popup.options.maxWidth = 300;
+      map.addLayer(marker_126)
+      
+      var marker_127_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_127 = L.marker([24.4223, 
+							88.4194],
+							{'icon':marker_127_icon}
+							);
+      marker_127.bindPopup("Bengale, R&#233;gion g&#233;ographique (Bangladesh/Inde)");
+      marker_127._popup.options.maxWidth = 300;
+      map.addLayer(marker_127)
+      
+      var marker_128_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_128 = L.marker([18.2, 
+							-73.75],
+							{'icon':marker_128_icon}
+							);
+      marker_128.bindPopup("Les Cayes-Saint-Louis (Saint-Domingue, &#206;le de)");
+      marker_128._popup.options.maxWidth = 300;
+      map.addLayer(marker_128)
+      
+      var marker_129_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_129 = L.marker([11.755999999999998, 
+							79.763],
+							{'icon':marker_129_icon}
+							);
+      marker_129.bindPopup("Mangicoupan (Inde)");
+      marker_129._popup.options.maxWidth = 300;
+      map.addLayer(marker_129)
+      
+      var marker_130_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_130 = L.marker([19.75, 
+							-72.4333],
+							{'icon':marker_130_icon}
+							);
+      marker_130.bindPopup("Port-Margot (Saint-Domingue, &#206;le de)");
+      marker_130._popup.options.maxWidth = 300;
+      map.addLayer(marker_130)
+      
+      var marker_131_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_131 = L.marker([32.7965, 
+							-79.9461],
+							{'icon':marker_131_icon}
+							);
+      marker_131.bindPopup("Charleston (Caroline du Sud ; &#201;tats-Unis)");
+      marker_131._popup.options.maxWidth = 300;
+      map.addLayer(marker_131)
+      
+      var marker_132_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_132 = L.marker([43.4898, 
+							-1.4759],
+							{'icon':marker_132_icon}
+							);
+      marker_132.bindPopup("Bayonne (Pyr&#233;n&#233;es-Atlantiques ; France)");
+      marker_132._popup.options.maxWidth = 300;
+      map.addLayer(marker_132)
+      
+      var marker_133_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_133 = L.marker([18.25, 
+							-74.1],
+							{'icon':marker_133_icon}
+							);
+      marker_133.bindPopup("Port-&#224;-Piment (Saint-Domingue, &#206;le de)");
+      marker_133._popup.options.maxWidth = 300;
+      map.addLayer(marker_133)
+      
+      var marker_134_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_134 = L.marker([43.977, 
+							-0.17600000000000002],
+							{'icon':marker_134_icon}
+							);
+      marker_134.bindPopup("Gascogne, R&#233;gion g&#233;ographique (France)");
+      marker_134._popup.options.maxWidth = 300;
+      map.addLayer(marker_134)
+      
+      var marker_135_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_135 = L.marker([47.7996, 
+							3.5703],
+							{'icon':marker_135_icon}
+							);
+      marker_135.bindPopup("Auxerre (Yonne ; France)");
+      marker_135._popup.options.maxWidth = 300;
+      map.addLayer(marker_135)
+      
+      var marker_136_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_136 = L.marker([19.7599, 
+							-72.2],
+							{'icon':marker_136_icon}
+							);
+      marker_136.bindPopup("Cap-Fran&#231;ais (Saint-Domingue, &#206;le de)");
+      marker_136._popup.options.maxWidth = 300;
+      map.addLayer(marker_136)
+      
+      var marker_137_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_137 = L.marker([-34.358056, 
+							18.471944],
+							{'icon':marker_137_icon}
+							);
+      marker_137.bindPopup("Bonne Esp&#233;rance, Cap de (Afrique du Sud)");
+      marker_137._popup.options.maxWidth = 300;
+      map.addLayer(marker_137)
+      
+      var marker_138_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_138 = L.marker([19.1166, 
+							-72.7],
+							{'icon':marker_138_icon}
+							);
+      marker_138.bindPopup("Saint-Marc (Saint-Domingue, &#206;le de)");
+      marker_138._popup.options.maxWidth = 300;
+      map.addLayer(marker_138)
+      
+      var marker_139_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_139 = L.marker([46.4315, 
+							4.6607],
+							{'icon':marker_139_icon}
+							);
+      marker_139.bindPopup("Cluny (Sa&#244;ne-et-Loire ; France)");
+      marker_139._popup.options.maxWidth = 300;
+      map.addLayer(marker_139)
+      
+      var marker_140_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_140 = L.marker([43.6125, 
+							3.8751],
+							{'icon':marker_140_icon}
+							);
+      marker_140.bindPopup("Montpellier (H&#233;rault ; France)");
+      marker_140._popup.options.maxWidth = 300;
+      map.addLayer(marker_140)
+      
+      var marker_141_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_141 = L.marker([46.2226, 
+							-1.4694],
+							{'icon':marker_141_icon}
+							);
+      marker_141.bindPopup("R&#233;, &#206;le de (Charente-Maritime ; France)");
+      marker_141._popup.options.maxWidth = 300;
+      map.addLayer(marker_141)
+      
+      var marker_142_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_142 = L.marker([19.7599, 
+							-72.2],
+							{'icon':marker_142_icon}
+							);
+      marker_142.bindPopup("Le Cap (Saint-Domingue, &#206;le de)");
+      marker_142._popup.options.maxWidth = 300;
+      map.addLayer(marker_142)
+      
+      var marker_143_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_143 = L.marker([43.9346, 
+							0.6211],
+							{'icon':marker_143_icon}
+							);
+      marker_143.bindPopup("Lectoure (Gers ; France)");
+      marker_143._popup.options.maxWidth = 300;
+      map.addLayer(marker_143)
+      
+      var marker_144_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_144 = L.marker([14.666667000000002, 
+							-61.0],
+							{'icon':marker_144_icon}
+							);
+      marker_144.bindPopup("Martinique, &#206;le de la (Antilles)");
+      marker_144._popup.options.maxWidth = 300;
+      map.addLayer(marker_144)
+      
+      var marker_145_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_145 = L.marker([14.525556, 
+							-75.818333],
+							{'icon':marker_145_icon}
+							);
+      marker_145.bindPopup("Indes orientales");
+      marker_145._popup.options.maxWidth = 300;
+      map.addLayer(marker_145)
+      
+      var marker_146_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_146 = L.marker([45.383333, 
+							5.733333],
+							{'icon':marker_146_icon}
+							);
+      marker_146.bindPopup("Dauphin&#233;, R&#233;gion g&#233;ographique (France)");
+      marker_146._popup.options.maxWidth = 300;
+      map.addLayer(marker_146)
+      
+      var marker_147_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_147 = L.marker([16.1844, 
+							81.1349],
+							{'icon':marker_147_icon}
+							);
+      marker_147.bindPopup("Mazulipatam (Inde)");
+      marker_147._popup.options.maxWidth = 300;
+      map.addLayer(marker_147)
+      
+      var marker_148_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_148 = L.marker([41.8, 
+							-89.36],
+							{'icon':marker_148_icon}
+							);
+      marker_148.bindPopup("Illinois, Territoire des (&#201;tats-Unis)");
+      marker_148._popup.options.maxWidth = 300;
+      map.addLayer(marker_148)
+      
+      var marker_149_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_149 = L.marker([46.9333, 
+							-56.3333],
+							{'icon':marker_149_icon}
+							);
+      marker_149.bindPopup("Saint-Pierre-et-Miquelon, Archipel de");
+      marker_149._popup.options.maxWidth = 300;
+      map.addLayer(marker_149)
+      
+      var marker_150_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_150 = L.marker([43.7573, 
+							-0.5736],
+							{'icon':marker_150_icon}
+							);
+      marker_150.bindPopup("Saint-Sever (Landes ; France)");
+      marker_150._popup.options.maxWidth = 300;
+      map.addLayer(marker_150)
+      
+      var marker_151_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_151 = L.marker([45.9244, 
+							-1.2868],
+							{'icon':marker_151_icon}
+							);
+      marker_151.bindPopup("Ol&#233;ron, &#206;le d' (Charente-Maritime ; France)");
+      marker_151._popup.options.maxWidth = 300;
+      map.addLayer(marker_151)
+      
+      var marker_152_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_152 = L.marker([19.5055, 
+							-72.3473],
+							{'icon':marker_152_icon}
+							);
+      marker_152.bindPopup("Marmelade (Saint-Domingue, &#206;le de)");
+      marker_152._popup.options.maxWidth = 300;
+      map.addLayer(marker_152)
+      
+      var marker_153_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_153 = L.marker([6.366667, 
+							2.083333],
+							{'icon':marker_153_icon}
+							);
+      marker_153.bindPopup("Saint-Louis, Fort (B&#233;nin)");
+      marker_153._popup.options.maxWidth = 300;
+      map.addLayer(marker_153)
+      
+      var marker_154_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_154 = L.marker([47.4728, 
+							-0.5539],
+							{'icon':marker_154_icon}
+							);
+      marker_154.bindPopup("Angers (Maine-et-Loire ; France)");
+      marker_154._popup.options.maxWidth = 300;
+      map.addLayer(marker_154)
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+   </script>
+
+</body>

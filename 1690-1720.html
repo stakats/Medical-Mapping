@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://rawgit.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.css">
+   <script src="https://rawgithub.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.js"></script>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+
+   <link rel="stylesheet" href="https://birdage.github.io/Leaflet.awesome-markers/dist/leaflet.awesome.rotate.css">
+
+   
+   
+   
+   
+
+   <style>
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="folium-map" id="folium_198d9703b9984825b43891f73fd8c64f" style="width: 100%; height: 100%"></div>
+
+   <script>
+
+      
+
+      var base_tile = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          minZoom: 1,
+          attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      });
+
+      var baseLayer = {
+        "Base Layer": base_tile
+      };
+
+      /*
+      addition of the wms layers
+      */
+
+      
+
+      /*
+      addition of the tile layers
+      */
+      
+
+      /*
+      list of layers to be added
+      */
+      var layer_list = {
+      
+      };
+
+      /*
+      Bounding box.
+      */
+      var southWest = L.latLng(-90, -180),
+          northEast = L.latLng(90, 180),
+          bounds = L.latLngBounds(southWest, northEast);
+
+      /*
+      Creates the map and adds the selected layers
+      */
+      var map = L.map('folium_198d9703b9984825b43891f73fd8c64f', {
+                                       center:[0, 0],
+                                       zoom: 2,
+                                       maxBounds: bounds,
+                                       layers: [base_tile]
+                                     });
+
+      L.control.layers(baseLayer, layer_list).addTo(map);
+
+      //cluster group
+      var clusteredmarkers = L.markerClusterGroup();
+      //section for adding clustered markers
+      
+      var marker_1_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_1 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_1_icon}
+							);
+      marker_1.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424auwvup\">Berbudau, Jean Gabriel, chirurgien &#224; l'&#238;le Royale 1709/1780</a>");
+      marker_1._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_1)
+      
+      var marker_2_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_2 = L.marker([14.666667000000002, 
+							-61.0],
+							{'icon':marker_2_icon}
+							);
+      marker_2.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424yzt0vy\">Gaston, ma&#238;tre-chirurgien &#224; la Martinique 1708</a>");
+      marker_2._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_2)
+      
+      var marker_3_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_3 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_3_icon}
+							);
+      marker_3.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424rlkqspm\">La Grange, Jean de, chirurgien-major &#224; l'&#238;le Royale 1713/1724</a>");
+      marker_3._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_3)
+      
+      var marker_4_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_4 = L.marker([46.8156, 
+							-71.2254],
+							{'icon':marker_4_icon}
+							);
+      marker_4.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424hbbcaao\">Lajus, chirurgien &#224; Qu&#233;bec 1709</a>");
+      marker_4._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_4)
+      
+      var marker_5_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_5 = L.marker([50.4667, 
+							4.8667],
+							{'icon':marker_5_icon}
+							);
+      marker_5.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oinjkmr\">R&#233;my, Dieudonn&#233; Joseph, originaire de Namur, m&#233;decin &#224; la Guadeloupe 1709/1784</a>");
+      marker_5._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_5)
+      
+      var marker_6_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_6 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_6_icon}
+							);
+      marker_6.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oinjkmr\">R&#233;my, Dieudonn&#233; Joseph, originaire de Namur, m&#233;decin &#224; la Guadeloupe 1709/1784</a>");
+      marker_6._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_6)
+      
+      var marker_7_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_7 = L.marker([30.656024100000003, 
+							-88.0311088],
+							{'icon':marker_7_icon}
+							);
+      marker_7.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424xrxwytb\">Servier, Jean, chirurgien-major &#224; la Mobile &#224; la Louisiane, testament 1720/1727</a>");
+      marker_7._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_7)
+      
+      var marker_8_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_8 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_8_icon}
+							);
+      marker_8.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424xrxwytb\">Servier, Jean, chirurgien-major &#224; la Mobile &#224; la Louisiane, testament 1720/1727</a>");
+      marker_8._popup.options.maxWidth = 300;
+      clusteredmarkers.addLayer(marker_8)
+      
+      //add the clustered markers to the group anyway
+      map.addLayer(clusteredmarkers);
+
+      
+
+      
+
+      
+      var latLngs = [ [50.4667, 4.8667],  [16.25, -61.583332999999996], ];
+var line_1 = L.polyline(latLngs,{
+
+weight: 2,
+opacity: 0.4,
+});
+      
+      map.addLayer(line_1);
+      
+      var latLngs = [ [30.656024100000003, -88.0311088],  [31.0, -92.0], ];
+var line_2 = L.polyline(latLngs,{
+
+weight: 2,
+opacity: 0.4,
+});
+      
+      map.addLayer(line_2);
+      
+
+      
+
+      
+
+      
+
+
+
+   </script>
+
+</body>

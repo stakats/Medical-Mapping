@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://rawgit.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.css">
+   <script src="https://rawgithub.com/lvoogdt/Leaflet.awesome-markers/2.0/develop/dist/leaflet.awesome-markers.js"></script>
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js"></script>
+
+   <link rel="stylesheet" href="https://birdage.github.io/Leaflet.awesome-markers/dist/leaflet.awesome.rotate.css">
+
+   
+   
+   
+   
+
+   <style>
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:0;
+      }
+
+   </style>
+</head>
+
+<body>
+
+   <div class="folium-map" id="folium_f349b9b2c4e246479cfc7939f425c733" style="width: 100%; height: 100%"></div>
+
+   <script>
+
+      
+
+      var base_tile = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          minZoom: 1,
+          attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      });
+
+      var baseLayer = {
+        "Base Layer": base_tile
+      };
+
+      /*
+      addition of the wms layers
+      */
+
+      
+
+      /*
+      addition of the tile layers
+      */
+      
+
+      /*
+      list of layers to be added
+      */
+      var layer_list = {
+      
+      };
+
+      /*
+      Bounding box.
+      */
+      var southWest = L.latLng(-90, -180),
+          northEast = L.latLng(90, 180),
+          bounds = L.latLngBounds(southWest, northEast);
+
+      /*
+      Creates the map and adds the selected layers
+      */
+      var map = L.map('folium_f349b9b2c4e246479cfc7939f425c733', {
+                                       center:[45.7831, 3.0824],
+                                       zoom: 6,
+                                       maxBounds: bounds,
+                                       layers: [base_tile]
+                                     });
+
+      L.control.layers(baseLayer, layer_list).addTo(map);
+
+      //cluster group
+      var clusteredmarkers = L.markerClusterGroup();
+      //section for adding clustered markers
+      
+      //add the clustered markers to the group anyway
+      map.addLayer(clusteredmarkers);
+
+      
+      var marker_1_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_1 = L.marker([46.3498, 
+							-72.5585],
+							{'icon':marker_1_icon}
+							);
+      marker_1.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424rlkps\">Alavoine, chirurgien-major &#224; l'h&#244;pital des Trois-Rivi&#232;res 1757/1761</a>");
+      marker_1._popup.options.maxWidth = 300;
+      map.addLayer(marker_1)
+      
+      var marker_2_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_2 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_2_icon}
+							);
+      marker_2.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424qnkos\">Artur, Jacques Fran&#231;ois, m&#233;decin et doyen du Conseil sup&#233;rieur &#224; Cayenne 1735/1781</a>");
+      marker_2._popup.options.maxWidth = 300;
+      map.addLayer(marker_2)
+      
+      var marker_3_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_3 = L.marker([46.3848, 
+							-63.3691],
+							{'icon':marker_3_icon}
+							);
+      marker_3.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424wxpqp\">Barbudeau, Gabriel, chirurgien des troupes d&#233;tach&#233;es &#224; l'&#238;le Saint-Jean, au Canada 1754/1771</a>");
+      marker_3._popup.options.maxWidth = 300;
+      map.addLayer(marker_3)
+      
+      var marker_4_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_4 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_4_icon}
+							);
+      marker_4.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424ystysj\">Benigne de Fontenette, m&#233;decin botaniste du Roi &#224; la Louisiane et conseiller au Conseil sup&#233;rieur de la colonie 1748/1763</a>");
+      marker_4._popup.options.maxWidth = 300;
+      map.addLayer(marker_4)
+      
+      var marker_5_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_5 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_5_icon}
+							);
+      marker_5.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424auwvup\">Berbudau, Jean Gabriel, chirurgien &#224; l'&#238;le Royale 1709/1780</a>");
+      marker_5._popup.options.maxWidth = 300;
+      map.addLayer(marker_5)
+      
+      var marker_6_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_6 = L.marker([18.7815, 
+							-72.2571],
+							{'icon':marker_6_icon}
+							);
+      marker_6.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tnqmnf\">Bernard de Maisonneuve, chirurgien-major &#224; Saint-Domingue 1729/1765</a>");
+      marker_6._popup.options.maxWidth = 300;
+      map.addLayer(marker_6)
+      
+      var marker_7_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_7 = L.marker([46.8156, 
+							-71.2254],
+							{'icon':marker_7_icon}
+							);
+      marker_7.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424bvy02m\">Berthier, Michel, chirurgien-major &#224; Qu&#233;bec, et sa veuve 1733/1765</a>");
+      marker_7._popup.options.maxWidth = 300;
+      map.addLayer(marker_7)
+      
+      var marker_8_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_8 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_8_icon}
+							);
+      marker_8.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424icfjck\">Bertin, ancien chirurgien-major &#224; l'&#238;le Royale, retir&#233; &#224; Rochefort 1742/1776</a>");
+      marker_8._popup.options.maxWidth = 300;
+      map.addLayer(marker_8)
+      
+      var marker_9_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_9 = L.marker([45.9373, 
+							-0.9665],
+							{'icon':marker_9_icon}
+							);
+      marker_9.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424icfjck\">Bertin, ancien chirurgien-major &#224; l'&#238;le Royale, retir&#233; &#224; Rochefort 1742/1776</a>");
+      marker_9._popup.options.maxWidth = 300;
+      map.addLayer(marker_9)
+      
+      var marker_10_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_10 = L.marker([14.666667000000002, 
+							-61.0],
+							{'icon':marker_10_icon}
+							);
+      marker_10.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424bvz3zk\">Beziat, Jean, ma&#238;tre chirurgien &#224; la Martinique 1751</a>");
+      marker_10._popup.options.maxWidth = 300;
+      map.addLayer(marker_10)
+      
+      var marker_11_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_11 = L.marker([30.0061, 
+							-90.1195],
+							{'icon':marker_11_icon}
+							);
+      marker_11.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424ezxzxg\">Borda, Antoine, chirurgien &#224; la Nouvelle-Orl&#233;ans 1759/1764</a>");
+      marker_11._popup.options.maxWidth = 300;
+      map.addLayer(marker_11)
+      
+      var marker_12_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_12 = L.marker([44.2127, 
+							4.5318],
+							{'icon':marker_12_icon}
+							);
+      marker_12.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_12._popup.options.maxWidth = 300;
+      map.addLayer(marker_12)
+      
+      var marker_13_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_13 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_13_icon}
+							);
+      marker_13.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_13._popup.options.maxWidth = 300;
+      map.addLayer(marker_13)
+      
+      var marker_14_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_14 = L.marker([44.1625, 
+							4.6203],
+							{'icon':marker_14_icon}
+							);
+      marker_14.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_14._popup.options.maxWidth = 300;
+      map.addLayer(marker_14)
+      
+      var marker_15_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_15 = L.marker([43.666667, 
+							3.166667],
+							{'icon':marker_15_icon}
+							);
+      marker_15.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_15._popup.options.maxWidth = 300;
+      map.addLayer(marker_15)
+      
+      var marker_16_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_16 = L.marker([45.5248, 
+							4.8735],
+							{'icon':marker_16_icon}
+							);
+      marker_16.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_16._popup.options.maxWidth = 300;
+      map.addLayer(marker_16)
+      
+      var marker_17_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_17 = L.marker([45.383333, 
+							5.733333],
+							{'icon':marker_17_icon}
+							);
+      marker_17.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424tomqoh\">Borelli, Jean Joseph, chirurgien originaire de Saint-Laurens-de-Carnols (Gard), d&#233;c&#233;d&#233; &#224; la Guadeloupe, en 1758, sa succession r&#233;clam&#233;e par son p&#232;re Joseph Borelli, habitant Bagnols en Languedoc, et son cousin Joseph Borelli, prieur des dominicains de Vienne, en Dauphin&#233; 1767/1789</a>");
+      marker_17._popup.options.maxWidth = 300;
+      map.addLayer(marker_17)
+      
+      var marker_18_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_18 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_18_icon}
+							);
+      marker_18.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424dyw22r\">Boss&#233;, Louis Auguste, chirurgien entretenu au service du Roi, en l'&#238;le et colonie de Cayenne 1743/1762</a>");
+      marker_18._popup.options.maxWidth = 300;
+      map.addLayer(marker_18)
+      
+      var marker_19_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_19 = L.marker([31.554444, 
+							-91.3875],
+							{'icon':marker_19_icon}
+							);
+      marker_19.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424dyy3xm\">Bourgeat, Joseph, chirurgien au poste des Natchez, &#224; la Louisiane 1759</a>");
+      marker_19._popup.options.maxWidth = 300;
+      map.addLayer(marker_19)
+      
+      var marker_20_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_20 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_20_icon}
+							);
+      marker_20.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424dyy3xm\">Bourgeat, Joseph, chirurgien au poste des Natchez, &#224; la Louisiane 1759</a>");
+      marker_20._popup.options.maxWidth = 300;
+      map.addLayer(marker_20)
+      
+      var marker_21_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_21 = L.marker([19.7599, 
+							-72.2],
+							{'icon':marker_21_icon}
+							);
+      marker_21.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424lgihfv\">Boyrie, Jean Baptiste, chirurgien au Cap-Fran&#231;ais &#224; Saint-Domingue 1757/1760</a>");
+      marker_21._popup.options.maxWidth = 300;
+      map.addLayer(marker_21)
+      
+      var marker_22_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_22 = L.marker([53.0, 
+							-70.0],
+							{'icon':marker_22_icon}
+							);
+      marker_22.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424mihgof\">Caylan, Jean, chirurgien du Roi au Canada 1758/1767</a>");
+      marker_22._popup.options.maxWidth = 300;
+      map.addLayer(marker_22)
+      
+      var marker_23_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_23 = L.marker([53.0, 
+							-70.0],
+							{'icon':marker_23_icon}
+							);
+      marker_23.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424wsxqte\">Chomel, m&#233;decin du Roi au Canada 1756/1758</a>");
+      marker_23._popup.options.maxWidth = 300;
+      map.addLayer(marker_23)
+      
+      var marker_24_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_24 = L.marker([46.2102, 
+							-60.7159],
+							{'icon':marker_24_icon}
+							);
+      marker_24.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424aw2vvb\">Clergeau, chirurgien &#224; l'&#238;le Royale 1751</a>");
+      marker_24._popup.options.maxWidth = 300;
+      map.addLayer(marker_24)
+      
+      var marker_25_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_25 = L.marker([49.2, 
+							0.016666999999999998],
+							{'icon':marker_25_icon}
+							);
+      marker_25.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424zw01xj\">Davault, Henri, dit la Plume, natif de Normandie, chirurgien, engag&#233; et incorpor&#233; &#224; Louisbourg, &#238;le Royale 1752</a>");
+      marker_25._popup.options.maxWidth = 300;
+      map.addLayer(marker_25)
+      
+      var marker_26_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_26 = L.marker([45.8923, 
+							-59.9841],
+							{'icon':marker_26_icon}
+							);
+      marker_26.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424zw01xj\">Davault, Henri, dit la Plume, natif de Normandie, chirurgien, engag&#233; et incorpor&#233; &#224; Louisbourg, &#238;le Royale 1752</a>");
+      marker_26._popup.options.maxWidth = 300;
+      map.addLayer(marker_26)
+      
+      var marker_27_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_27 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_27_icon}
+							);
+      marker_27.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424d053yc\">Dedons, Jean Baptiste, chirurgien-major de la garnison de Cayenne puis procureur du Roi aux si&#232;ge royal et de l'amiraut&#233; 1742/1753</a>");
+      marker_27._popup.options.maxWidth = 300;
+      map.addLayer(marker_27)
+      
+      var marker_28_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_28 = L.marker([43.9346, 
+							0.6211],
+							{'icon':marker_28_icon}
+							);
+      marker_28.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424f32y0b\">Descomps, Jean, natif du dioc&#232;se de Lectoure, ma&#238;tre-chirurgien &#224; la Grenade, et son fils Jean Baptiste Descomps 1747/1770</a>");
+      marker_28._popup.options.maxWidth = 300;
+      map.addLayer(marker_28)
+      
+      var marker_29_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_29 = L.marker([12.1199, 
+							-61.6882],
+							{'icon':marker_29_icon}
+							);
+      marker_29.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424f32y0b\">Descomps, Jean, natif du dioc&#232;se de Lectoure, ma&#238;tre-chirurgien &#224; la Grenade, et son fils Jean Baptiste Descomps 1747/1770</a>");
+      marker_29._popup.options.maxWidth = 300;
+      map.addLayer(marker_29)
+      
+      var marker_30_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_30 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_30_icon}
+							);
+      marker_30.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424poiplv\">Du Jarric de La Garde, m&#233;decin &#224; la Guadeloupe, demande un brevet de m&#233;decin du Roi 1755</a>");
+      marker_30._popup.options.maxWidth = 300;
+      map.addLayer(marker_30)
+      
+      var marker_31_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_31 = L.marker([18.4314, 
+							-72.8669],
+							{'icon':marker_31_icon}
+							);
+      marker_31.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424pooria\">Dupin, Fran&#231;ois, ma&#238;tre-chirurgien au Petit-Goave, &#224; Saint-Domingue, et sa veuve Boissay (Marie), succession de cette derni&#232;re 1759</a>");
+      marker_31._popup.options.maxWidth = 300;
+      map.addLayer(marker_31)
+      
+      var marker_32_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_32 = L.marker([46.8156, 
+							-71.2254],
+							{'icon':marker_32_icon}
+							);
+      marker_32.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424llellg\">Emery, d', chirurgien-major de la place pendant le si&#232;ge de Qu&#233;bec 1759</a>");
+      marker_32._popup.options.maxWidth = 300;
+      map.addLayer(marker_32)
+      
+      var marker_33_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_33 = L.marker([30.0061, 
+							-90.1195],
+							{'icon':marker_33_icon}
+							);
+      marker_33.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424ppkojv\">Falgoust, chirurgien &#224; la Nouvelle-Orl&#233;ans, Louisiane 1759</a>");
+      marker_33._popup.options.maxWidth = 300;
+      map.addLayer(marker_33)
+      
+      var marker_34_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_34 = L.marker([45.5003, 
+							-73.6464],
+							{'icon':marker_34_icon}
+							);
+      marker_34.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424b1yvyg\">Feltz, Ferdinand, chirurgien-major des troupes &#224; Montr&#233;al et Gaucelin C&#233;cile, sa veuve 1742/1779</a>");
+      marker_34._popup.options.maxWidth = 300;
+      map.addLayer(marker_34)
+      
+      var marker_35_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_35 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_35_icon}
+							);
+      marker_35.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424wwtrqc\">F&#233;raud, Louis, doyen des chirurgiens de l'&#238;le de la Guadeloupe 1760/an II</a>");
+      marker_35._popup.options.maxWidth = 300;
+      map.addLayer(marker_35)
+      
+      var marker_36_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_36 = L.marker([18.7815, 
+							-72.2571],
+							{'icon':marker_36_icon}
+							);
+      marker_36.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oomhkp\">Feyssat, m&#233;decin du Roi &#224; Saint-Domingue 1751</a>");
+      marker_36._popup.options.maxWidth = 300;
+      map.addLayer(marker_36)
+      
+      var marker_37_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_37 = L.marker([5.4314029999999995, 
+							-2.093964],
+							{'icon':marker_37_icon}
+							);
+      marker_37.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424iiigbp\">Fortin, Pierre, chirurgien au service de la Compagnie des Indes, sa conduite suspecte &#224; Anamabou sur la c&#244;te de Guin&#233;e 1752</a>");
+      marker_37._popup.options.maxWidth = 300;
+      map.addLayer(marker_37)
+      
+      var marker_38_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_38 = L.marker([7.538060000000001, 
+							-8.4972],
+							{'icon':marker_38_icon}
+							);
+      marker_38.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424iiigbp\">Fortin, Pierre, chirurgien au service de la Compagnie des Indes, sa conduite suspecte &#224; Anamabou sur la c&#244;te de Guin&#233;e 1752</a>");
+      marker_38._popup.options.maxWidth = 300;
+      map.addLayer(marker_38)
+      
+      var marker_39_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_39 = L.marker([48.6486, 
+							-2.026],
+							{'icon':marker_39_icon}
+							);
+      marker_39.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424ophklp\">Fuzet Du Gu&#233;, Fran&#231;ois, natif du dioc&#232;se de Saint-Malo, chirurgien sur le brigantin l'H&#233;l&#232;ne, mort &#224; l'&#238;le de Bourbon en 1772 1736/1774</a>");
+      marker_39._popup.options.maxWidth = 300;
+      map.addLayer(marker_39)
+      
+      var marker_40_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_40 = L.marker([-21.15, 
+							55.5],
+							{'icon':marker_40_icon}
+							);
+      marker_40.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424ophklp\">Fuzet Du Gu&#233;, Fran&#231;ois, natif du dioc&#232;se de Saint-Malo, chirurgien sur le brigantin l'H&#233;l&#232;ne, mort &#224; l'&#238;le de Bourbon en 1772 1736/1774</a>");
+      marker_40._popup.options.maxWidth = 300;
+      map.addLayer(marker_40)
+      
+      var marker_41_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_41 = L.marker([30.0061, 
+							-90.1195],
+							{'icon':marker_41_icon}
+							);
+      marker_41.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424uvpoqs\">Gardrat, chirurgien-major &#224; la Nouvelle-Orl&#233;ans 1759</a>");
+      marker_41._popup.options.maxWidth = 300;
+      map.addLayer(marker_41)
+      
+      var marker_42_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_42 = L.marker([14.666667000000002, 
+							-61.0],
+							{'icon':marker_42_icon}
+							);
+      marker_42.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424z0uvuv\">Garnier, Guy Andr&#233;, m&#233;decin du Roi &#224; la Martinique et &#224; la Guadeloupe 1750/1775</a>");
+      marker_42._popup.options.maxWidth = 300;
+      map.addLayer(marker_42)
+      
+      var marker_43_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_43 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_43_icon}
+							);
+      marker_43.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424z0uvuv\">Garnier, Guy Andr&#233;, m&#233;decin du Roi &#224; la Martinique et &#224; la Guadeloupe 1750/1775</a>");
+      marker_43._popup.options.maxWidth = 300;
+      map.addLayer(marker_43)
+      
+      var marker_44_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_44 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_44_icon}
+							);
+      marker_44.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424z0vyze\">Gauron, Josselin Louis, chirurgien &#224; Cayenne, demande une penseion de retraite 1755/1792</a>");
+      marker_44._popup.options.maxWidth = 300;
+      map.addLayer(marker_44)
+      
+      var marker_45_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_45 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_45_icon}
+							);
+      marker_45.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424nonpjw\">Glotain, chirurgien-major des troupes &#224; la Guadeloupe 1749/1778</a>");
+      marker_45._popup.options.maxWidth = 300;
+      map.addLayer(marker_45)
+      
+      var marker_46_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_46 = L.marker([29.1264, 
+							-89.0881],
+							{'icon':marker_46_icon}
+							);
+      marker_46.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424nopkgq\">Goudeau, chirurgien au poste de la Balise, &#224; la Louisiane 1759</a>");
+      marker_46._popup.options.maxWidth = 300;
+      map.addLayer(marker_46)
+      
+      var marker_47_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_47 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_47_icon}
+							);
+      marker_47.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424nopkgq\">Goudeau, chirurgien au poste de la Balise, &#224; la Louisiane 1759</a>");
+      marker_47._popup.options.maxWidth = 300;
+      map.addLayer(marker_47)
+      
+      var marker_48_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_48 = L.marker([45.183, 
+							0.7170000000000001],
+							{'icon':marker_48_icon}
+							);
+      marker_48.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424npkonx\">Guyne, Stanislas de, natif du P&#233;rigord, demande une place de m&#233;decin du Roi &#224; Saint-Domingue 1732/1785</a>");
+      marker_48._popup.options.maxWidth = 300;
+      map.addLayer(marker_48)
+      
+      var marker_49_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_49 = L.marker([18.7815, 
+							-72.2571],
+							{'icon':marker_49_icon}
+							);
+      marker_49.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424npkonx\">Guyne, Stanislas de, natif du P&#233;rigord, demande une place de m&#233;decin du Roi &#224; Saint-Domingue 1732/1785</a>");
+      marker_49._popup.options.maxWidth = 300;
+      map.addLayer(marker_49)
+      
+      var marker_50_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_50 = L.marker([4.9316, 
+							-52.3155],
+							{'icon':marker_50_icon}
+							);
+      marker_50.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424g00z12x\">Laborde, Raymond, m&#233;decin de Roi &#224; Cayenne 1725/1786</a>");
+      marker_50._popup.options.maxWidth = 300;
+      map.addLayer(marker_50)
+      
+      var marker_51_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_51 = L.marker([41.8, 
+							-89.36],
+							{'icon':marker_51_icon}
+							);
+      marker_51.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424cwwv42e\">Lafaure, chirurgien aux Illinois, &#224; la Louisiane 1759</a>");
+      marker_51._popup.options.maxWidth = 300;
+      map.addLayer(marker_51)
+      
+      var marker_52_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_52 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_52_icon}
+							);
+      marker_52.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424cwwv42e\">Lafaure, chirurgien aux Illinois, &#224; la Louisiane 1759</a>");
+      marker_52._popup.options.maxWidth = 300;
+      map.addLayer(marker_52)
+      
+      var marker_53_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_53 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_53_icon}
+							);
+      marker_53.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424pjjjkqt\">Lafore, chirurgien &#224; la Louisiane 1759</a>");
+      marker_53._popup.options.maxWidth = 300;
+      map.addLayer(marker_53)
+      
+      var marker_54_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_54 = L.marker([30.656024100000003, 
+							-88.0311088],
+							{'icon':marker_54_icon}
+							);
+      marker_54.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424dxx03xg\">Larvas, chirurgien &#224; la Mobile, &#224; la Louisiane 1759</a>");
+      marker_54._popup.options.maxWidth = 300;
+      map.addLayer(marker_54)
+      
+      var marker_55_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_55 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_55_icon}
+							);
+      marker_55.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424dxx03xg\">Larvas, chirurgien &#224; la Mobile, &#224; la Louisiane 1759</a>");
+      marker_55._popup.options.maxWidth = 300;
+      map.addLayer(marker_55)
+      
+      var marker_56_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_56 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_56_icon}
+							);
+      marker_56.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424vppuprc\">Lavall&#233;e, Claude, chirurgien &#224; la Louisiane 1759</a>");
+      marker_56._popup.options.maxWidth = 300;
+      map.addLayer(marker_56)
+      
+      var marker_57_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_57 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_57_icon}
+							);
+      marker_57.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424rlmnlpe\">Lefebvre, chirurgien-major du r&#233;giment de Karrer &#224; la Louisiane 1741/1750</a>");
+      marker_57._popup.options.maxWidth = 300;
+      map.addLayer(marker_57)
+      
+      var marker_58_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_58 = L.marker([11.93, 
+							79.83],
+							{'icon':marker_58_icon}
+							);
+      marker_58.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424smnqnli\">Lenormand, Hyacinthe, chirurgien-major &#224; Pondich&#233;ry 1755/1786</a>");
+      marker_58._popup.options.maxWidth = 300;
+      map.addLayer(marker_58)
+      
+      var marker_59_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_59 = L.marker([18.4314, 
+							-72.8669],
+							{'icon':marker_59_icon}
+							);
+      marker_59.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424eyz563b\">Lop&#232;s de Pas, Michel, m&#233;decin au Petit-Goave, &#224; Saint-Domingue 1751</a>");
+      marker_59._popup.options.maxWidth = 300;
+      map.addLayer(marker_59)
+      
+      var marker_60_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_60 = L.marker([53.0, 
+							-70.0],
+							{'icon':marker_60_icon}
+							);
+      marker_60.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424kehedfk\">Monferrand, Pierre, chirurgien au Canada 1754/1792</a>");
+      marker_60._popup.options.maxWidth = 300;
+      map.addLayer(marker_60)
+      
+      var marker_61_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_61 = L.marker([19.7599, 
+							-72.2],
+							{'icon':marker_61_icon}
+							);
+      marker_61.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424rlorsqs\">Pages, m&#233;decin du Roi au Cap-Fran&#231;ais &#224; Saint-Domingue 1758/1763</a>");
+      marker_61._popup.options.maxWidth = 300;
+      map.addLayer(marker_61)
+      
+      var marker_62_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_62 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_62_icon}
+							);
+      marker_62.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424auywuzk\">Peyssonnel, Jean Andr&#233;, m&#233;decin-botaniste &#224; la Guadeloupe 1726/1756</a>");
+      marker_62._popup.options.maxWidth = 300;
+      map.addLayer(marker_62)
+      
+      var marker_63_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_63 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_63_icon}
+							);
+      marker_63.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424smqssqx\">Pradier, chirurgien-major en Louisiane 1759/1760</a>");
+      marker_63._popup.options.maxWidth = 300;
+      map.addLayer(marker_63)
+      
+      var marker_64_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_64 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_64_icon}
+							);
+      marker_64.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424qkorqrp\">Prudhomme, chirurgien en Louisiane 1756</a>");
+      marker_64._popup.options.maxWidth = 300;
+      map.addLayer(marker_64)
+      
+      var marker_65_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_65 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_65_icon}
+							);
+      marker_65.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424icgkibm\">Rabigot, Jean Louis, chirurgien en Louisiane 1760</a>");
+      marker_65._popup.options.maxWidth = 300;
+      map.addLayer(marker_65)
+      
+      var marker_66_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_66 = L.marker([50.4667, 
+							4.8667],
+							{'icon':marker_66_icon}
+							);
+      marker_66.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oinjkmr\">R&#233;my, Dieudonn&#233; Joseph, originaire de Namur, m&#233;decin &#224; la Guadeloupe 1709/1784</a>");
+      marker_66._popup.options.maxWidth = 300;
+      map.addLayer(marker_66)
+      
+      var marker_67_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_67 = L.marker([16.25, 
+							-61.583332999999996],
+							{'icon':marker_67_icon}
+							);
+      marker_67.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oinjkmr\">R&#233;my, Dieudonn&#233; Joseph, originaire de Namur, m&#233;decin &#224; la Guadeloupe 1709/1784</a>");
+      marker_67._popup.options.maxWidth = 300;
+      map.addLayer(marker_67)
+      
+      var marker_68_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_68 = L.marker([31.0, 
+							-92.0],
+							{'icon':marker_68_icon}
+							);
+      marker_68.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424auzvxvj\">Renal, Jean, chirurgien au poste de l'&#238;le aux Chats &#224; la Louisiane 1759</a>");
+      marker_68._popup.options.maxWidth = 300;
+      map.addLayer(marker_68)
+      
+      var marker_69_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_69 = L.marker([19.6646, 
+							-71.8374],
+							{'icon':marker_69_icon}
+							);
+      marker_69.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424pjomlpb\">Richaud, Pierre Paul, chirurgien au Fort-Dauphin &#224; Saint-Domingue 1751/1782</a>");
+      marker_69._popup.options.maxWidth = 300;
+      map.addLayer(marker_69)
+      
+      var marker_70_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_70 = L.marker([45.8923, 
+							-59.9841],
+							{'icon':marker_70_icon}
+							);
+      marker_70.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424vpuurog\">Roche, Jean, chirurgien &#224; Louisbourg &#224; l'&#238;le Royale 1756/1757</a>");
+      marker_70._popup.options.maxWidth = 300;
+      map.addLayer(marker_70)
+      
+      var marker_71_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_71 = L.marker([18.7815, 
+							-72.2571],
+							{'icon':marker_71_icon}
+							);
+      marker_71.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424jdjldlx\">Souverbie, Jacques, chirurgien &#224; Saint-Domingue 1744/1759</a>");
+      marker_71._popup.options.maxWidth = 300;
+      map.addLayer(marker_71)
+      
+      var marker_72_icon = L.AwesomeMarkers.icon({ icon: 'info-sign',markerColor: 'blue',prefix: 'glyphicon',extraClasses: 'fa-rotate-0'});
+      var marker_72 = L.marker([12.1199, 
+							-61.6882],
+							{'icon':marker_72_icon}
+							);
+      marker_72.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424nhoogkp\">Vaujours, Jean Baptiste de, m&#233;decin du Roi &#224; la Grenade 1746/1773</a>");
+      marker_72._popup.options.maxWidth = 300;
+      map.addLayer(marker_72)
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+
+
+   </script>
+
+</body>
