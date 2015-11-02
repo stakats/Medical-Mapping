@@ -50,7 +50,7 @@
 
 <body>
 
-   <div class="folium-map" id="folium_d60d07a5fe3b41af91c1cc33d6933fcf" style="width: 100%; height: 100%"></div>
+   <div class="folium-map" id="folium_3d6777049ac4449e9f83fce9359aba51" style="width: 100%; height: 100%"></div>
 
    <script>
 
@@ -94,7 +94,7 @@
       /*
       Creates the map and adds the selected layers
       */
-      var map = L.map('folium_d60d07a5fe3b41af91c1cc33d6933fcf', {
+      var map = L.map('folium_3d6777049ac4449e9f83fce9359aba51', {
                                        center:[0, 0],
                                        zoom: 2,
                                        maxBounds: bounds,
@@ -193,7 +193,8 @@ var line_1 = L.polyline(latLngs,{
 weight: 2,
 opacity: 0.4,
 });
-      
+      line_1.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424oinjkmr\">R&#233;my, Dieudonn&#233; Joseph, originaire de Namur, m&#233;decin &#224; la Guadeloupe 1709/1784</a>");
+      line_1._popup.options.maxWidth = 300;
       map.addLayer(line_1);
       
       var latLngs = [ [30.656024100000003, -88.0311088],  [31.0, -92.0], ];
@@ -202,7 +203,8 @@ var line_2 = L.polyline(latLngs,{
 weight: 2,
 opacity: 0.4,
 });
-      
+      line_2.bindPopup("<a href=\"http://anom.archivesnationales.culture.gouv.fr//ark:/61561/up424xrxwytb\">Servier, Jean, chirurgien-major &#224; la Mobile &#224; la Louisiane, testament 1720/1727</a>");
+      line_2._popup.options.maxWidth = 300;
       map.addLayer(line_2);
       
 
